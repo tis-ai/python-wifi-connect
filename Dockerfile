@@ -15,4 +15,4 @@ EXPOSE 80
 RUN ./scripts/install.sh
 COPY setting.sh ./scripts/
 CMD ["bash", "./scripts/setting.sh"]
-CMD ["bash", "./scripts/run.sh"]
+RUN ./scripts/run.sh
