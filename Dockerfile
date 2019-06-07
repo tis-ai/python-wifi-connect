@@ -16,4 +16,5 @@ RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 RUN echo $DBUS_SYSTEM_BUS_ADDRESS
 RUN sed -i -e "2i export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket" ./scripts/run.sh
 RUN ./scripts/install.sh
+RUN cat ./scripts/run.sh
 RUN ./scripts/run.sh
