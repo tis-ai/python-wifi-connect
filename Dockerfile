@@ -1,7 +1,5 @@
 FROM balenalib/raspberrypi3-python:3.6.6-stretch-build-20181207
 
-RUN 
-
 RUN apt update && \
     apt install -y --no-install-recommends \
 	    git && \
