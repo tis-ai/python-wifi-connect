@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi3-python:3.6.6-jessie-run-20181207
+FROM balenalib/raspberrypi3-python:3.7.6-stretch-run-20181207
 
 RUN apt update && \
     apt install -y --no-install-recommends \
