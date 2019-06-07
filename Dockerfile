@@ -14,4 +14,5 @@ WORKDIR /usr/src/app/python-wifi-connect
 
 CMD ["which", "nmcli"]
 RUN ./scripts/install.sh
+RUN service messagebus start
 RUN ./scripts/run.sh
