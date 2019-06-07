@@ -14,6 +14,8 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 
 WORKDIR /usr/src/app/python-wifi-connect
 
+RUN echo $DBUS_SYSTEM_BUS_ADDRESS
+
 CMD ["which", "nmcli"]
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
