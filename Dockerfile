@@ -12,6 +12,6 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 
 WORKDIR /usr/src/app/python-wifi-connect
 
-RUN ./scripts/optional_install_NetworkManager_on_Linux.sh
+RUN which nmcli
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
