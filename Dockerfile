@@ -15,6 +15,7 @@ WORKDIR /usr/src/app/python-wifi-connect
 RUN echo $DBUS_SYSTEM_BUS_ADDRESS
 
 COPY setting.sh scripts/
+RUN chmod 755 ./scripts/setting.sh
 RUN ./scripts/setting.sh
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
