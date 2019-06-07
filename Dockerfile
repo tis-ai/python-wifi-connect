@@ -12,8 +12,6 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 
 WORKDIR /usr/src/app/python-wifi-connect
 
-RUN pip3.6 install --upgrade pip
-RUN pip --version
-RUN pip3.6 --version
-RUN ./scripts/install.sh
+RUN pip install --upgrade pip
+RUN pip install -r config/requirements.txt
 RUN ./scripts/run.sh
