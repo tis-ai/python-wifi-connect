@@ -12,6 +12,6 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 
 WORKDIR /usr/src/app/python-wifi-connect
 
-RUN pip install --upgrade pip
+RUN ./scripts/optional_install_NetworkManager_on_Linux.sh
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
