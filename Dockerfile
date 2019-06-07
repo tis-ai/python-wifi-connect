@@ -4,6 +4,7 @@ RUN apt update && \
     apt install -y --no-install-recommends \
 		dnsmasq \
 		wireless-tools \
+		libdbus-1-dev \
 	    git && \
 	apt clean && \
 	rm -rf /var/lib/apt/lists/*
