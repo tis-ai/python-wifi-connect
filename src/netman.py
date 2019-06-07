@@ -33,6 +33,7 @@ def have_active_internet_connection(host="8.8.8.8", port=53, timeout=2):
 def delete_all_wifi_connections():
     # Get all known connections
     connections = NetworkManager.Settings.ListConnections()
+    print(">>> Do networkmanager.Settings.ListConnections")
 
     # Delete the '802-11-wireless' connections
     for connection in connections:
@@ -57,6 +58,7 @@ def stop_connection(conn_name=GENERIC_CONNECTION_NAME):
     # Find the hotspot connection
     try:
         connections = NetworkManager.Settings.ListConnections()
+        print(">>> Do networkmanager.Settings.ListConnections")
         connections = dict([(x.GetSettings()['connection']['id'], x) for x in connections])
         conn = connections[conn_name]
         conn.Delete()
@@ -81,6 +83,7 @@ def get_list_of_access_points():
     ssids = [] # list we return
 
     for dev in NetworkManager.NetworkManager.GetDevices():
+        print(">>> for networkmanager.GetDevices")
         if dev.DeviceType != NetworkManager.NM_DEVICE_TYPE_WIFI:
             continue
         for ap in dev.GetAccessPoints():
@@ -272,10 +275,12 @@ def connect_to_AP(conn_type=None, conn_name=GENERIC_CONNECTION_NAME, \
         #print(f"new connection {conn_dict} type={conn_str}")
 
         NetworkManager.Settings.AddConnection(conn_dict)
+        print(">>> Do networkmanager.Settings.AddConnection")
         print(f"Added connection {conn_name} of type {conn_str}")
 
         # Now find this connection and its device
         connections = NetworkManager.Settings.ListConnections()
+        print(">>> Do networkmanager.Settings.ListConnection")
         connections = dict([(x.GetSettings()['connection']['id'], x) for x in connections])
         conn = connections[conn_name]
 
@@ -283,6 +288,7 @@ def connect_to_AP(conn_type=None, conn_name=GENERIC_CONNECTION_NAME, \
         ctype = conn.GetSettings()['connection']['type']
         dtype = {'802-11-wireless': NetworkManager.NM_DEVICE_TYPE_WIFI}.get(ctype,ctype)
         devices = NetworkManager.NetworkManager.GetDevices()
+        print(">>> Do networkmanager.GetDevices")
 
         for dev in devices:
             if dev.DeviceType == dtype:
@@ -293,6 +299,7 @@ def connect_to_AP(conn_type=None, conn_name=GENERIC_CONNECTION_NAME, \
 
         # And connect
         NetworkManager.NetworkManager.ActivateConnection(conn, dev, "/")
+        print(">>> Do networkmanager.ActivateConnection")
         print(f"Activated connection={conn_name}.")
 
         # Wait for ADDRCONF(NETDEV_CHANGE): wlan0: link becomes ready
