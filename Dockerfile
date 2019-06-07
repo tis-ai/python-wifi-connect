@@ -14,7 +14,6 @@ WORKDIR /usr/src/app/python-wifi-connect
 
 RUN echo $DBUS_SYSTEM_BUS_ADDRESS
 
-CMD ["which", "nmcli"]
-RUN echo "export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket" >> ./scripts/install.sh
+COPY setting.sh .
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
