@@ -13,8 +13,5 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 WORKDIR /usr/src/app/python-wifi-connect
 
 RUN pip install --upgrade pip
-RUN python -m venv venv
-CMD ["source", "venv/bin/activate"]
-RUN ls
-RUN pip install -r config/requirements.txt
+RUN ./scripts/install.sh
 RUN ./scripts/run.sh
