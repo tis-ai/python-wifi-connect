@@ -12,6 +12,6 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 
 WORKDIR /usr/src/app/python-wifi-connect
 
-RUN which nmcli
+CMD ["which", "nmcli"]
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
