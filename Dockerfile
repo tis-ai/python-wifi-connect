@@ -8,6 +8,8 @@ RUN apt update && \
 
 WORKDIR /usr/src/app
 
+RUN pip install --upgrade pip
+
 RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.git
 
 WORKDIR /usr/src/app/python-wifi-connect
