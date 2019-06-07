@@ -12,9 +12,8 @@ RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.g
 
 WORKDIR /usr/src/app/python-wifi-connect
 
-COPY setting.sh scripts/
-RUN chmod 755 ./scripts/setting.sh
-RUN ./scripts/setting.sh
+RUN export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 RUN echo $DBUS_SYSTEM_BUS_ADDRESS
+RUN sed -i -e "2i export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket" ./scripts/run.sh
 RUN ./scripts/install.sh
 RUN ./scripts/run.sh
