@@ -15,4 +15,5 @@ EXPOSE 80
 RUN ./scripts/install.sh
 COPY setting.sh ./scripts/
 CMD ["bash", "./scripts/setting.sh"]
+RUN sed -i -e "2i export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket" ./scripts/run.sh
 RUN ./scripts/run.sh
