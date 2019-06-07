@@ -8,13 +8,10 @@ RUN apt update && \
 
 WORKDIR /usr/src/app
 
-RUN pip install --upgrade pip
-
 RUN git clone https://github.com/OpenAgricultureFoundation/python-wifi-connect.git
 
 WORKDIR /usr/src/app/python-wifi-connect
 
-RUN ./scripts/optional_install_NetworkManager_on_Linux.sh
-RUN ./scripts/install.sh
-
-RUN ./scripts/run.sh
+RUN pip install --upgrade pip && \
+    ./scripts/install.sh && \
+    ./scripts/run.sh
