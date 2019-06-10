@@ -5,6 +5,7 @@
 # over (the module documentation is scant).
 
 import NetworkManager
+import dumper
 import uuid, os, sys, time, socket
 
 HOTSPOT_CONNECTION_NAME = 'hotspot'
@@ -281,7 +282,7 @@ def connect_to_AP(conn_type=None, conn_name=GENERIC_CONNECTION_NAME, \
         # Now find this connection and its device
         connections = NetworkManager.Settings.ListConnections()
         print(">>> Do networkmanager.Settings.ListConnections")
-        print(f"Connections {connections}")
+        dump(connections)
         connections = dict([(x.GetSettings()['connection']['id'], x) for x in connections])
         conn = connections[conn_name]
 
