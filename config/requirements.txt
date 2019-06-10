@@ -1,2 +1,2 @@
 python-networkmanager
-dumper
+pprint
